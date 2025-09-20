@@ -1,12 +1,22 @@
+import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
     <>
-      {/* // add bg image */}
-      <div className="bg-[url(/backgroundImg.svg)] h-screen w-full bg-cover bg-center" />
+      {/* Add fixed bg image behind content */}
+      <div
+        className="fixed inset-0 -z-10 bg-[url(/backgroundImg.svg)] bg-cover bg-center bg-no-repeat"
+        aria-hidden
+      />
+      <div className="bg-transparent pt-24 relative z-0">
+        <Navbar />
 
-      <Navbar />
+        <main>
+          <HeroSection />
+        </main>
+        <footer>Footer</footer>
+      </div>
     </>
   );
 }

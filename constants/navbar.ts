@@ -4,38 +4,39 @@ export const rentListComponents: {
   description: string;
 }[] = [
   {
-    title: "Alert Dialog",
+    title: "Something",
     href: "/",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "lorem ipsum dolor sit amet consectetur adipisicing elit. Amet libero vero animi minus itaque quasi a officiis veritatis magni nisi eaque",
   },
   {
-    title: "Hover Card",
+    title: "Anything",
     href: "/",
     description:
-      "For sighted users to preview content available behind a link.",
+      "lorem ipsum dolor sit amet consectetur adipisicing elit. Amet libero vero animi minus itaque quasi a officiis veritatis magni nisi eaque",
   },
   {
-    title: "Progress",
+    title: "Another thing",
     href: "/",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "lorem ipsum dolor sit amet consectetur adipisicing elit. Amet libero vero animi minus itaque quasi a officiis veritatis magni nisi eaque",
   },
   {
-    title: "Scroll-area",
+    title: "More stuff",
     href: "/",
-    description: "Visually or semantically separates content.",
+    description:
+      "lorem ipsum dolor sit amet consectetur adipisicing elit. Amet libero vero animi minus itaque quasi a officiis veritatis magni nisi eaque",
   },
   {
     title: "Tabs",
     href: "/",
     description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+      "lorem ipsum dolor sit amet consectetur adipisicing elit. Amet libero vero animi minus itaque quasi a officiis veritatis magni nisi eaque",
   },
   {
-    title: "Tooltip",
+    title: "Preview",
     href: "/",
     description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "lorem ipsum dolor sit amet consectetur adipisicing elit. Amet libero vero animi minus itaque quasi a officiis veritatis magni nisi eaque",
   },
 ];

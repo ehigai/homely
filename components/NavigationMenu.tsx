@@ -14,13 +14,11 @@ import { rentListComponents } from "@/constants/navbar";
 
 export const DesktopNavigationMenu = () => {
   return (
-    <NavigationMenu viewport={false} className="hidden md:flex">
+    <NavigationMenu viewport={false} className="hidden lg:flex">
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent">
-            Buy
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
+        <NavigationMenuItem className="bg-transparent">
+          <NavigationMenuTrigger>Buy</NavigationMenuTrigger>
+          <NavigationMenuContent className="bg-secondary">
             <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
@@ -28,23 +26,24 @@ export const DesktopNavigationMenu = () => {
                     className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
                     href="/"
                   >
-                    <div className="mt-4 mb-2 text-lg font-medium">
-                      shadcn/ui
-                    </div>
-                    <p className="text-muted-foreground text-sm leading-tight">
-                      Beautifully designed components built with Tailwind CSS.
+                    <div className="mt-4 mb-2 text-lg font-medium">Homely</div>
+                    <p className="text-primary text-sm leading-tight">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Dolore, debitis laborum. voluptas consequuntur!
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+              <ListItem href="/" title="Consequuntur">
+                Dolore, debitis laborum. voluptas consequ.
               </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+              <ListItem href="/" title="Debitis">
+                ipsum dolor sit amet consectetur adipisicing elit. Amet libero
+                vero animi minus itaque quasi a officiis veritatis magni nisi
+                eaque
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
+              <ListItem href="/" title="Comfort">
+                Styles Dolore, debitis laborum. voluptas.
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -69,13 +68,13 @@ export const DesktopNavigationMenu = () => {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/docs">About us</Link>
+            <Link href="/about">About us</Link>
           </NavigationMenuLink>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/docs">Contact us</Link>
+            <Link href="/contact">Contact us</Link>
           </NavigationMenuLink>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/docs">Blog</Link>
+            <Link href="/blog">Blog</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
@@ -100,7 +99,7 @@ function ListItem({
       <NavigationMenuLink asChild>
         <Link href={href}>
           <div className="text-sm leading-none font-medium">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+          <p className="text-primary line-clamp-2 text-sm leading-snug">
             {children}
           </p>
         </Link>

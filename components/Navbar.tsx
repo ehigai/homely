@@ -15,6 +15,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navRef = useRef<HTMLElement | null>(null);
   const toggleRef = useRef<HTMLDivElement | null>(null);
+  const [scrolled, setScrolled] = useState<boolean>(false);
 
   useEffect(() => {
     function handlePointerDown(e: PointerEvent) {
@@ -35,8 +36,26 @@ const Navbar = () => {
     document.addEventListener("pointerdown", handlePointerDown);
     return () => document.removeEventListener("pointerdown", handlePointerDown);
   }, [isOpen]);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 10);
+    }
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <header className="py-6 px-3 fixed top-0 left-0 w-full bg-transparent z-10 text-white">
+    <header
+      className={clsx(
+        "h-24 py-6 px-3 fixed top-0 left-0 w-full z-10 text-white transition-colors duration-300",
+        {
+          "bg-transparent": !scrolled,
+          "bg-secondary": scrolled,
+        }
+      )}
+    >
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3 text-2xl">
           <Image src={logoIcon} width={26} height={30} alt="Logo" />
@@ -50,7 +69,7 @@ const Navbar = () => {
         <nav
           ref={navRef}
           className={clsx(
-            "md:hidden bg-red-500 flex flex-col gap-6 p-6 pt-20 fixed top-0 left-0 w-4/5 h-screen shadow-sm z-40",
+            "lg:hidden bg-red-500 flex flex-col gap-6 p-6 pt-20 fixed top-0 left-0 w-4/5 h-screen shadow-sm z-40",
             "transition-all duration-300 ease-out",
             {
               "translate-x-0 opacity-100 pointer-events-auto": isOpen,
@@ -65,7 +84,7 @@ const Navbar = () => {
           <Input
             type="search"
             className={clsx(
-              "md:hidden",
+              "lg:hidden",
               "!placeholder-white/60",
               "!aria-invalid:ring-white/20",
               "!dark:aria-invalid:ring-white/40",
@@ -76,7 +95,7 @@ const Navbar = () => {
 
           <Button
             variant="secondary"
-            className="hidden md:block bg-secondary text-secondary-foreground px-2"
+            className="hidden lg:block bg-secondary/80 text-secondary-foreground px-2"
             size="lg"
           >
             <Image src={searchIcon} alt="Search Icon" width={20} height={20} />
@@ -84,7 +103,7 @@ const Navbar = () => {
 
           <Button
             variant="secondary"
-            className="hidden md:block font-semibold"
+            className="hidden lg:block font-semibold bg-secondary/80 cursor-pointer"
             size="lg"
           >
             Talk to an agent
@@ -93,7 +112,7 @@ const Navbar = () => {
         <div
           ref={toggleRef}
           onClick={() => setIsOpen(!isOpen)}
-          className="p-2 cursor-pointer md:hidden"
+          className="p-2 cursor-pointer lg:hidden"
         >
           {isOpen ? (
             <X width={30} height={30} />
