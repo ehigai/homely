@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Menu, X } from "lucide-react";
 import clsx from "clsx";
-import { DesktopNavigationMenu } from "./NavigationMenu";
-import { NavigationMenu } from "@radix-ui/react-navigation-menu";
+import { DesktopNavigationMenu, MobileNavigationMenu } from "./NavigationMenu";
+import { NavigationMenu } from "@/components/ui/navigation-menu";
+import { fontJakartaSans } from "@/app/ui/fonts";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -26,6 +27,7 @@ const Navbar = () => {
         !navRef.current.contains(target) &&
         !toggleRef.current.contains(target)
       ) {
+        NavigationMenu;
         setIsOpen(false);
       }
     }
@@ -34,40 +36,57 @@ const Navbar = () => {
     return () => document.removeEventListener("pointerdown", handlePointerDown);
   }, [isOpen]);
   return (
-    <header className="border py-4 px-2 fixed top-0 left-0 w-full bg-transparent z-10 text-white">
-      <div className="container mx-auto border flex items-center justify-between">
-        <div className="flex">
-          <Image src={logoIcon} width={30} height={30} alt="Logo" />
+    <header className="py-6 px-3 fixed top-0 left-0 w-full bg-transparent z-10 text-white">
+      <div className="container mx-auto flex items-center justify-between">
+        <div className="flex items-center gap-3 text-2xl">
+          <Image src={logoIcon} width={26} height={30} alt="Logo" />
+          <div className={`${fontJakartaSans} hidden md:block font-bold`}>
+            Homely
+          </div>
         </div>
-        {/* viewport={false} */}
-        <NavigationMenu
+
+        <DesktopNavigationMenu />
+
+        <nav
           ref={navRef}
           className={clsx(
-            "md:flex md:static",
-            "bg-red-500 flex absolute top-0 left-0 w-4/5 h-screen shadow-sm flex-col gap-6 p-6 pt-20",
-            "transform transition-transform duration-300 ease-out",
+            "md:hidden bg-red-500 flex flex-col gap-6 p-6 pt-20 fixed top-0 left-0 w-4/5 h-screen shadow-sm z-40",
+            "transition-all duration-300 ease-out",
             {
               "translate-x-0 opacity-100 pointer-events-auto": isOpen,
               "-translate-x-full opacity-0 pointer-events-none": !isOpen,
-              // ensure desktop is not affected by mobile toggling on click outside of nav
-              "md:translate-x-0 md:opacity-100 md:bg-transparent md:shadow-none md:w-auto md:h-auto md:p-0 md:pt-0 md:flex-row md:gap-0":
-                true,
             }
           )}
         >
-          <DesktopNavigationMenu />
-        </NavigationMenu>
+          <MobileNavigationMenu />
+        </nav>
 
         <div className="flex items-center gap-3">
           <Input
             type="search"
-            className="md:hidden"
+            className={clsx(
+              "md:hidden",
+              "!placeholder-white/60",
+              "!aria-invalid:ring-white/20",
+              "!dark:aria-invalid:ring-white/40",
+              "aria-invalid:border-destructive"
+            )}
             placeholder="search properties..."
           />
-          <div className="hidden md:block bg-secondary text-secondary-foreground rounded-md p-1.5">
+
+          <Button
+            variant="secondary"
+            className="hidden md:block bg-secondary text-secondary-foreground px-2"
+            size="lg"
+          >
             <Image src={searchIcon} alt="Search Icon" width={20} height={20} />
-          </div>
-          <Button variant="secondary" className="hidden md:block font-semibold">
+          </Button>
+
+          <Button
+            variant="secondary"
+            className="hidden md:block font-semibold"
+            size="lg"
+          >
             Talk to an agent
           </Button>
         </div>
