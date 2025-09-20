@@ -22,7 +22,7 @@ export const DesktopNavigationMenu = () => {
             <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
+                  <Link
                     className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
                     href="/"
                   >
@@ -31,7 +31,7 @@ export const DesktopNavigationMenu = () => {
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Dolore, debitis laborum. voluptas consequuntur!
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/" title="Consequuntur">
